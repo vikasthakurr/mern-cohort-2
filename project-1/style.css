@@ -491,3 +491,418 @@ header {
     inset: -10px -10px 10px 10px;
   }
 }
+
+/* ===== Centered section header variant ===== */
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-eyebrow--center {
+  display: inline-block;
+}
+
+.section-eyebrow--center::after {
+  content: "";
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background-color: var(--gold);
+  vertical-align: middle;
+  margin-left: 0.9rem;
+}
+
+/* ===== Menu ===== */
+.menu {
+  background-color: var(--black);
+  padding: 6rem 2rem;
+}
+
+.menu-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 4rem;
+}
+
+/* Menu item */
+.menu-item {
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(201, 162, 75, 0.18);
+  transition: border-color 0.3s ease;
+}
+
+.menu-item:hover {
+  border-color: var(--gold);
+}
+
+.menu-item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.menu-item-name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white);
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover .menu-item-name {
+  color: var(--gold);
+}
+
+/* Dotted leader between name and price */
+.menu-item-dots {
+  flex: 1;
+  border-bottom: 1px dotted rgba(245, 245, 245, 0.25);
+  transform: translateY(-4px);
+}
+
+.menu-item-price {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.menu-item-desc {
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: rgba(245, 245, 245, 0.7);
+  max-width: 42ch;
+}
+
+/* Menu CTA */
+.menu-cta {
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+/* ===== Menu on small screens ===== */
+@media (max-width: 768px) {
+  .menu {
+    padding: 4rem 1.5rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ===== Chef's Specials ===== */
+.specials {
+  background-color: var(--black-soft);
+  padding: 6rem 2rem;
+}
+
+.specials-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.specials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+/* Card */
+.special-card {
+  background-color: var(--black);
+  border: 1px solid rgba(201, 162, 75, 0.18);
+  border-radius: 3px;
+  overflow: hidden;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.special-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+}
+
+/* Media */
+.special-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.special-media img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(15%);
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+.special-card:hover .special-media img {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+/* Tag */
+.special-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(13, 13, 13, 0.85);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 2px;
+}
+
+/* Body */
+.special-body {
+  padding: 1.75rem;
+}
+
+.special-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.special-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--white);
+  transition: color 0.3s ease;
+}
+
+.special-card:hover .special-name {
+  color: var(--gold);
+}
+
+.special-price {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.special-desc {
+  font-size: 0.96rem;
+  font-weight: 300;
+  color: rgba(245, 245, 245, 0.7);
+}
+
+/* ===== Specials on small screens ===== */
+@media (max-width: 992px) {
+  .specials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .specials {
+    padding: 4rem 1.5rem;
+  }
+
+  .specials-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ===== Contact / Reservation ===== */
+.contact {
+  background-color: var(--black);
+  padding: 6rem 2rem;
+}
+
+.contact .container {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Map the eyebrow/center/gold classes to the shared eyebrow look */
+.eyebrow {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow.gold {
+  color: var(--gold);
+}
+
+.eyebrow.center {
+  text-align: center;
+}
+
+.eyebrow.center::before,
+.eyebrow.center::after {
+  content: "";
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background-color: var(--gold);
+  vertical-align: middle;
+  margin: 0 0.9rem;
+}
+
+/* Center the section title within contact */
+.contact .section-title {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+/* Grid: info left, form right */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ===== Contact info ===== */
+.contact-info {
+  display: grid;
+  gap: 2rem;
+}
+
+.contact-item h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+/* Small gold diamond marker */
+.ci-icon {
+  width: 8px;
+  height: 8px;
+  background-color: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.contact-item p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(245, 245, 245, 0.8);
+}
+
+/* ===== Reservation form ===== */
+.reservation-form {
+  background-color: var(--black-soft);
+  border: 1px solid rgba(201, 162, 75, 0.2);
+  border-radius: 3px;
+  padding: 2.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.7);
+  margin-bottom: 0.55rem;
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--white);
+  background-color: transparent;
+  border: 1px solid rgba(245, 245, 245, 0.2);
+  border-radius: 2px;
+  padding: 0.75rem 0.9rem;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(245, 245, 245, 0.35);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(201, 162, 75, 0.2);
+}
+
+/* Dark date/time picker indicator so it stays visible on black */
+.form-group input[type="time"] {
+  color-scheme: dark;
+}
+
+/* Submit reuses the gold .btn, full width */
+.form-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+/* ===== Contact on small screens ===== */
+@media (max-width: 768px) {
+  .contact {
+    padding: 4rem 1.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .reservation-form {
+    padding: 1.75rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
