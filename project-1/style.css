@@ -906,3 +906,142 @@ header {
     gap: 0;
   }
 }
+
+/* ===== Footer ===== */
+.footer {
+  background-color: var(--black-soft);
+  border-top: 1px solid rgba(201, 162, 75, 0.2);
+  padding: 4rem 2rem 0;
+}
+
+.footer-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.2fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Brand column */
+.footer-brand .logo {
+  font-size: 1.7rem;
+}
+
+.footer-tagline {
+  margin: 1rem 0 1.5rem;
+  max-width: 340px;
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: rgba(245, 245, 245, 0.65);
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-social a {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.75);
+  transition: color 0.25s ease;
+}
+
+.footer-social a:hover {
+  color: var(--gold);
+}
+
+/* Column headings */
+.footer h4 {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+/* Nav column */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer-nav a {
+  font-size: 0.95rem;
+  color: rgba(245, 245, 245, 0.75);
+  transition:
+    color 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--gold);
+  padding-left: 6px;
+}
+
+/* Hours column */
+.footer-hours p {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(245, 245, 245, 0.75);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.08);
+}
+
+.footer-hours p span {
+  color: var(--white);
+  font-weight: 400;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 1.75rem 0;
+  border-top: 1px solid rgba(201, 162, 75, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: rgba(245, 245, 245, 0.55);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.footer-legal a {
+  color: rgba(245, 245, 245, 0.55);
+  transition: color 0.25s ease;
+}
+
+.footer-legal a:hover {
+  color: var(--gold);
+}
+
+/* ===== Footer on small screens ===== */
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 1.5rem 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
