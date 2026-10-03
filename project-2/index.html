@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookMyShow - Book Movies, Events & Shows</title>
+  <meta name="description" content="BookMyShow - Book movie tickets, live events, plays and sports in one place. Best seats, best prices.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (prefersLight ? 'light' : 'dark'));
+    })();
+  </script>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Book<span class="text-danger">My</span>Show</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#movies">Movies</a></li>
+          <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="#offers">Offers</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+          <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
+          <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section text-white">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container position-relative">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 hero-copy">
+          <span class="hero-tag">Now booking across 60+ cities</span>
+          <h1 class="hero-title">Your next <span class="hero-highlight">great night out</span> starts here</h1>
+          <p class="hero-lead">Movies, live concerts, comedy, plays and sports. One place to discover it all and grab the best seats in seconds.</p>
+
+          <div class="hero-search">
+            <span class="hero-search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input type="text" class="hero-search-input" placeholder="Search movies, events, plays, sports..." aria-label="Search">
+            <button class="btn btn-danger hero-search-btn">Search</button>
+          </div>
+
+          <div class="hero-chips">
+            <a href="#movies" class="hero-chip">Movies</a>
+            <a href="#events" class="hero-chip">Concerts</a>
+            <a href="#events" class="hero-chip">Comedy</a>
+            <a href="#events" class="hero-chip">Sports</a>
+            <a href="#offers" class="hero-chip">Offers</a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 d-none d-lg-block">
+          <div class="hero-collage" aria-hidden="true">
+            <div class="poster poster-1">
+              <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg" alt="">
+            </div>
+            <div class="poster poster-2">
+              <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg" alt="">
+            </div>
+            <div class="hero-ticket">
+              <span class="hero-ticket-label">Tonight, 7:00 PM</span>
+              <strong class="hero-ticket-title">The Dark Knight</strong>
+              <span class="hero-ticket-seat">Row H · Seats 12-13</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="movies" class="py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-2">Now Showing</h2>
+      <p class="section-subtitle">Catch the latest blockbusters near you</p>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card movie-card h-100">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg" class="card-img-top movie-poster" alt="The Dark Knight">
+            <div class="card-body">
+              <h5 class="card-title">The Dark Knight</h5>
+              <p class="card-text text-muted small">Action/Thriller • UA • English</p>
+              <div class="d-flex align-items-center mb-2">
+                <span class="badge bg-success me-2 rating-badge">9.0</span>
+                <small class="text-muted">120K votes</small>
+              </div>
+              <button class="btn btn-danger btn-sm w-100" data-bs-toggle="modal" data-bs-target="#bookingModal" data-movie="The Dark Knight">Book Tickets</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card movie-card h-100">
+            <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg" class="card-img-top movie-poster" alt="Inception">
+            <div class="card-body">
+              <h5 class="card-title">Inception</h5>
+              <p class="card-text text-muted small">Sci-Fi/Action • UA • English</p>
+              <div class="d-flex align-items-center mb-2">
+                <span class="badge bg-success me-2 rating-badge">8.8</span>
+                <small class="text-muted">98K votes</small>
+              </div>
+              <button class="btn btn-danger btn-sm w-100" data-bs-toggle="modal" data-bs-target="#bookingModal" data-movie="Inception">Book Tickets</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card movie-card h-100">
+            <img src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg" class="card-img-top movie-poster" alt="Interstellar">
+            <div class="card-body">
+              <h5 class="card-title">Interstellar</h5>
+              <p class="card-text text-muted small">Sci-Fi/Drama • UA • English</p>
+              <div class="d-flex align-items-center mb-2">
+                <span class="badge bg-success me-2 rating-badge">8.7</span>
+                <small class="text-muted">85K votes</small>
+              </div>
+              <button class="btn btn-danger btn-sm w-100" data-bs-toggle="modal" data-bs-target="#bookingModal" data-movie="Interstellar">Book Tickets</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card movie-card h-100">
+            <img src="https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg" class="card-img-top movie-poster" alt="Oppenheimer">
+            <div class="card-body">
+              <h5 class="card-title">Oppenheimer</h5>
+              <p class="card-text text-muted small">Drama/History • UA • English</p>
+              <div class="d-flex align-items-center mb-2">
+                <span class="badge bg-success me-2 rating-badge">8.5</span>
+                <small class="text-muted">72K votes</small>
+              </div>
+              <button class="btn btn-danger btn-sm w-100" data-bs-toggle="modal" data-bs-target="#bookingModal" data-movie="Oppenheimer">Book Tickets</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold mb-2">Upcoming Events</h2>
+      <p class="section-subtitle">Live music, comedy and sports you won't want to miss</p>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <span class="badge bg-primary mb-2">Music</span>
+              <h5 class="card-title">Arijit Singh Live</h5>
+              <p class="text-muted small">Aug 15, 2026 • Mumbai</p>
+              <p class="card-text">Experience the magic of Bollywood's finest singer performing live with a full orchestra.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-bold text-danger">₹1,499 onwards</span>
+                <button class="btn btn-outline-danger btn-sm">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <span class="badge bg-warning text-dark mb-2">Comedy</span>
+              <h5 class="card-title">Stand-Up Night</h5>
+              <p class="text-muted small">Aug 22, 2026 • Delhi</p>
+              <p class="card-text">A hilarious evening featuring top comedians from across the country in one power-packed show.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-bold text-danger">₹799 onwards</span>
+                <button class="btn btn-outline-danger btn-sm">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <span class="badge bg-info text-dark mb-2">Sports</span>
+              <h5 class="card-title">IPL Final 2026</h5>
+              <p class="text-muted small">Sep 10, 2026 • Ahmedabad</p>
+              <p class="card-text">The biggest cricket showdown of the year. Watch the final live at Narendra Modi Stadium.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-bold text-danger">₹2,999 onwards</span>
+                <button class="btn btn-outline-danger btn-sm">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content auth-modal">
+        <button type="button" class="btn-close auth-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="auth-split">
+          <aside class="auth-aside">
+            <a class="navbar-brand fw-bold auth-logo" href="#">Book<span class="text-danger">My</span>Show</a>
+            <h4 class="auth-aside-title">Welcome back</h4>
+            <p class="auth-aside-text">Sign in to book tickets faster, track your bookings, and unlock member-only offers.</p>
+            <ul class="auth-perks list-unstyled">
+              <li>Skip the queue with instant booking</li>
+              <li>Save your favourite cinemas</li>
+              <li>Exclusive early-access deals</li>
+            </ul>
+          </aside>
+          <div class="auth-form-panel">
+            <h5 class="modal-title auth-heading" id="loginModalLabel">Sign In</h5>
+            <p class="auth-subheading">Enter your details to continue</p>
+            <form id="loginForm" novalidate>
+              <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="you@email.com" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+              </div>
+              <div class="mb-2">
+                <label for="loginPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required minlength="6">
+                <div class="invalid-feedback">Password must be at least 6 characters.</div>
+              </div>
+              <div class="text-end mb-3">
+                <a href="#" class="auth-link small">Forgot password?</a>
+              </div>
+              <button type="submit" class="btn btn-danger w-100 btn-lg">Sign In</button>
+            </form>
+            <p class="auth-switch text-center mt-3 mb-0">
+              New to BookMyShow?
+              <a href="#" class="auth-link" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Create an account</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content auth-modal">
+        <button type="button" class="btn-close auth-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="auth-split">
+          <aside class="auth-aside">
+            <a class="navbar-brand fw-bold auth-logo" href="#">Book<span class="text-danger">My</span>Show</a>
+            <h4 class="auth-aside-title">Join the show</h4>
+            <p class="auth-aside-text">Create your free account and never miss a blockbuster, concert, or big match again.</p>
+            <ul class="auth-perks list-unstyled">
+              <li>One account for movies and events</li>
+              <li>Fifty percent off your first booking</li>
+              <li>Personalised recommendations</li>
+            </ul>
+          </aside>
+          <div class="auth-form-panel">
+            <h5 class="modal-title auth-heading" id="signupModalLabel">Create Account</h5>
+            <p class="auth-subheading">It only takes a minute</p>
+            <form id="signupForm" novalidate>
+              <div class="mb-3">
+                <label for="signupName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="signupName" placeholder="Your full name" required minlength="2">
+                <div class="invalid-feedback">Please enter your full name.</div>
+              </div>
+              <div class="mb-3">
+                <label for="signupEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="signupEmail" placeholder="you@email.com" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+              </div>
+              <div class="mb-3">
+                <label for="signupPhone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="signupPhone" placeholder="10-digit mobile number" required pattern="[0-9]{10}">
+                <div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>
+              </div>
+              <div class="row g-2">
+                <div class="col-sm-6 mb-3">
+                  <label for="signupPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="signupPassword" placeholder="Min 6 characters" required minlength="6">
+                  <div class="invalid-feedback">Password must be at least 6 characters.</div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                  <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Re-enter password" required>
+                  <div class="invalid-feedback">Passwords do not match.</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-danger w-100 btn-lg">Create Account</button>
+            </form>
+            <p class="auth-switch text-center mt-3 mb-0">
+              Already have an account?
+              <a href="#" class="auth-link" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookingModalLabel">Book Tickets</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="bookingForm" novalidate>
+            <div class="mb-3">
+              <label for="movieName" class="form-label">Movie</label>
+              <input type="text" class="form-control" id="movieName" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="bookingDate" class="form-label">Select Date</label>
+              <input type="date" class="form-control" id="bookingDate" required>
+              <div class="invalid-feedback">Please select a date.</div>
+            </div>
+            <div class="mb-3">
+              <label for="showTime" class="form-label">Show Time</label>
+              <select class="form-select" id="showTime" required>
+                <option value="">Choose a show time</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="7:00 PM">7:00 PM</option>
+                <option value="10:00 PM">10:00 PM</option>
+              </select>
+              <div class="invalid-feedback">Please select a show time.</div>
+            </div>
+            <div class="mb-3">
+              <label for="numTickets" class="form-label">Number of Tickets</label>
+              <input type="number" class="form-control" id="numTickets" min="1" max="10" required>
+              <div class="invalid-feedback">Please select between 1 and 10 tickets.</div>
+            </div>
+            <div class="mb-3">
+              <label for="bookingName" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="bookingName" required minlength="2">
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="mb-3">
+              <label for="bookingEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="bookingEmail" required>
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+            <button type="submit" class="btn btn-danger w-100">Confirm Booking</button>
+          </form>
+          <div id="bookingSuccess" class="alert alert-success mt-3 d-none">
+            Booking confirmed! Check your email for the ticket details.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
