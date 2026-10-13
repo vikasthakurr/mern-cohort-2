@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeIQ — ATS Resume Analyzer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Decorative background glow -->
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">IQ</span>
+        <div>
+          <h1 class="brand-title">ResumeIQ</h1>
+          <p class="brand-sub">ATS resume analyzer</p>
+        </div>
+      </div>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        type="button"
+        title="Toggle light / dark theme"
+        aria-label="Toggle theme"
+      >
+        <span class="theme-icon theme-icon-sun">☀</span>
+        <span class="theme-icon theme-icon-moon">☾</span>
+      </button>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h2 class="hero-title">Beat the bots. Land the interview.</h2>
+      <p class="hero-sub">
+        Paste your resume and a job description to see how well you match, which
+        keywords you're missing, and how to improve your ATS score.
+      </p>
+    </section>
+
+    <main class="layout">
+      <!-- Inputs -->
+      <section class="card inputs">
+        <h2 class="card-title">
+          <span class="card-step">1</span> Paste your details
+        </h2>
+
+        <label class="field-label" for="resumeInput">Your resume</label>
+        <textarea
+          id="resumeInput"
+          class="field"
+          rows="10"
+          placeholder="Paste the full text of your resume here..."
+        ></textarea>
+
+        <label class="field-label" for="jobInput">Job description</label>
+        <textarea
+          id="jobInput"
+          class="field"
+          rows="8"
+          placeholder="Paste the job description you're targeting..."
+        ></textarea>
+
+        <div class="actions">
+          <button id="analyzeBtn" class="btn btn-primary" type="button">
+            Analyze resume
+          </button>
+          <span id="analyzeStatus" class="status"></span>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section id="results" class="results hidden">
+        <div class="card score-card">
+          <h2 class="card-title"><span class="card-step">2</span> ATS Score</h2>
+          <div class="score-wrap">
+            <div id="scoreCircle" class="score-circle">
+              <div class="score-inner">
+                <span id="scoreValue" class="score-value">0</span>
+                <span class="score-max">/ 100</span>
+              </div>
+            </div>
+            <div class="score-detail">
+              <p id="scoreMessage" class="score-message"></p>
+              <p id="wordCount" class="word-count"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Category breakdown</h2>
+          <div id="categories-container" class="categories"></div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Resume sections</h2>
+          <div id="sections-container" class="sections"></div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">
+            <span class="dot dot-ok"></span> Matched keywords
+          </h2>
+          <div id="matched-container" class="chips"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title-row">
+            <h2 class="card-title">
+              <span class="dot dot-bad"></span> Missing keywords
+            </h2>
+            <button
+              id="copyMissingKeywords"
+              class="btn btn-ghost"
+              type="button"
+            >
+              Copy all
+            </button>
+          </div>
+          <div id="missing-container" class="chips"></div>
+          <span id="copystatus" class="status"></span>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Suggestions</h2>
+          <div id="suggestions-container" class="suggestions"></div>
+        </div>
+
+        <!-- AI panel -->
+        <div id="aiPanel" class="card ai-panel hidden">
+          <h2 class="card-title">
+            <span class="ai-badge">AI</span> Gemini suggestions
+          </h2>
+          <label class="field-label" for="geminiKey">Gemini API key</label>
+          <input
+            id="geminiKey"
+            class="field"
+            type="password"
+            placeholder="Paste your Gemini API key (stored locally)"
+          />
+          <div class="actions">
+            <button id="aiBtn" class="btn btn-primary" type="button">
+              Get AI suggestions
+            </button>
+            <span id="aiStatus" class="status"></span>
+          </div>
+          <ol id="aiSuggestionsList" class="ai-list"></ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        ResumeIQ runs entirely in your browser. Your text never leaves the page
+        unless you request AI suggestions.
+      </p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="gemini.js"></script>
+  </body>
+</html>
